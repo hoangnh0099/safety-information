@@ -1,31 +1,43 @@
 /**
- *
  * @flow
+ * @format
  */
 
+const english = require('./english');
+
 /**
- * Nghiêm Đình Trường
  * Bài 1: Hệ mã dịch vòng (Shift Cipher)
+ *
+ * Đầu vào: Hello
+ * Đầu ra: RPUUX
  */
 
-const shiftCipherEncode = (text: string): string => {
+const shiftCipherEncrypt = (text, k, english) => {
+  const textSplited = text.toUpperCase().split('');
+
+  let result = [];
+  let resultEncrypted = [];
+
+  textSplited.forEach(text => {
+    result.push((english.indexOf(text) + k) % 26);
+  });
+
+  result.forEach(text => {
+    resultEncrypted.push(english[text]);
+  });
+
+  return resultEncrypted;
+};
+
+const a = shiftCipherEncrypt('Nguyen Huy Hoang', 10, english);
+console.log(`Bản rõ: Nguyen Huy Hoang \nKết quả: ${a}`);
+
+//Bài 2: Hệ mã hóa thay thế (Substitution Cipher)
+const substitutionCipher = text => {
   return '';
 };
 
-/**
- * Nguyễn Quang Quý
- * Bài 2: Hệ mã hóa thay thế (Substitution Cipher)
- */
-
-const substitutionCipher = (text: string): string => {
-  return '';
-};
-
-/**
- * Nguyễn Huy Hoàng
- * Bài 3: Hệ mã Affine
- */
-
-const affineEncrypt = (text: string): string => {
+// Bài 3: Hệ mã Affine
+const affineEncrypt = text => {
   return '';
 };
